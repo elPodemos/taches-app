@@ -1,0 +1,43 @@
+<br>
+<div class="d-grid gap-2 col-6 mx-auto">
+    <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <a class="text-decoration-none text-reset">Ajouter une taches</a>
+    </button>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Ajouter une tâche</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form #addForm="ngForm" (ngSubmit)="onSubmit(addForm)">
+                    <input type="number" class="m-3" name="id" ngModel required><br>
+                    <input type="text" class="m-3" name="name" ngModel required><br>
+                    <input type="date" class="m-3" name="date" ngModel required><br>
+
+                    <button type="submit" class="btn btn-primary m-3" data-bs-dismiss="modal">
+                            Ajouter
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col">
+        <div *ngFor="let tache of getAllTache()">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ tache.date| date}}</h5>
+                    <p class="card-text">{{ tache.name }}</p>
+                    <button (click)="removeTache(tache.id)" type="button" class="btn btn-danger">Danger</button>
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+    <app-bitcoin></app-bitcoin>
+</div>
