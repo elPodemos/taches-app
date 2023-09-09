@@ -5,7 +5,6 @@ import { ListTachesComponent } from './list-taches/list-taches.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'taches', component: ListTachesComponent},
 ];
 
 @NgModule({
