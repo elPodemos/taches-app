@@ -14,7 +14,7 @@ export class BitcoinService {
   ) {}
 
   fetchAll() {
-    return this.http.get<Bitcoin[]>(this.url);
+    return this.http.get(this.url);
   }
 
 }

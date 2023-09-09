@@ -12,18 +12,19 @@ export class BitcoinComponent implements OnInit{
     private service:BitcoinService
     ){}
 
-  bitcoins:Bitcoin[] = []
+  lastBitcoin!:Bitcoin;
 
   ngOnInit() {
-    this.getAllBitcoin();
-    console.log(this.bitcoins);
+    this.getLastValueBitcoin();
   }
 
-  getAllBitcoin(){
-    this.service.fetchAll().subscribe( data =>{
-      console.log(data);
-      this.bitcoins = data;
-      return this.bitcoins;
+  getLastValueBitcoin(){
+    this.service.fetchAll().subscribe((data: any) =>{
+      if (data.data && data.data.length > 0) {
+        this.lastBitcoin = data.data[data.data.length - 1];
+        this.lastBitcoin.priceUsd = (Number(this.lastBitcoin.priceUsd).toFixed(2)).toString();
+      }
+      return this.lastBitcoin;
     })
   }
 }

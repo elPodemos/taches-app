@@ -2,8 +2,8 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">Taux Bitcoin</h5>
-            <p class="card-text text-primary"></p>
-            <p class="card-text">sss</p>
+            <p class="card-text text-primary">{{ lastBitcoin.date | date }}</p>
+            <p class="card-text">€{{ lastBitcoin.priceUsd }}</p>
         </div>
     </div>
 </div>
